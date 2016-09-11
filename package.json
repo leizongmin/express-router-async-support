@@ -9,7 +9,8 @@
   "scripts": {
     "test": "npm run compile && mocha --compilers js:babel-register",
     "lint": "eslint src --fix",
-    "compile": "babel src -d dist --source-maps=true"
+    "compile": "babel src -d dist --source-maps=true",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
