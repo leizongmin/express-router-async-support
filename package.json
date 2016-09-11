@@ -1,0 +1,46 @@
+{
+  "name": "express-router-async-support",
+  "version": "1.0.0",
+  "description": "async function support for express.Router",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npm run compile && mocha --compilers js:babel-register",
+    "lint": "eslint src --fix",
+    "compile": "babel src -d dist --source-maps=true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leizongmin/express-router-async-support.git"
+  },
+  "keywords": [
+    "express",
+    "router",
+    "async",
+    "promise"
+  ],
+  "author": "Zongmin Lei <leizongmin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leizongmin/express-router-async-support/issues"
+  },
+  "homepage": "https://github.com/leizongmin/express-router-async-support#readme",
+  "devDependencies": {
+    "async": "^2.0.1",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015-node4": "^2.1.0",
+    "babel-preset-stage-3": "^6.11.0",
+    "babel-register": "^6.14.0",
+    "body-parser": "^1.15.2",
+    "eslint": "^3.4.0",
+    "eslint-config-lei": "0.0.7",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
+  },
+  "dependencies": {
+    "methods": "^1.1.2"
+  }
+}
