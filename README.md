@@ -15,7 +15,7 @@ $ npm install express-router-async-support --save
 'use strict';
 
 const express = require('express');
-const wrap = require('express-router-async-support');
+const wrap = require('express-router-async-support').wrap;
 
 const app = express();
 // create router instance, use wrap() to support async function
