@@ -35,7 +35,7 @@
     "babel-preset-stage-3": "^6.11.0",
     "babel-register": "^6.14.0",
     "body-parser": "^1.15.2",
-    "eslint": "^3.4.0",
+    "eslint": "^3.10.2",
     "eslint-config-lei": "0.0.7",
     "express": "^4.14.0",
     "mocha": "^3.0.2",
