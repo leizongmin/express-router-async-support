@@ -39,7 +39,7 @@
     "eslint-config-lei": "0.0.7",
     "express": "^4.14.0",
     "mocha": "^3.0.2",
-    "supertest": "^2.0.0"
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "methods": "^1.1.2"
