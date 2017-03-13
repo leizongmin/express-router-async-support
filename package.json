@@ -38,7 +38,7 @@
     "eslint": "^3.17.0",
     "eslint-config-lei": "0.0.7",
     "express": "^4.15.0",
-    "mocha": "^3.0.2",
+    "mocha": "^3.2.0",
     "supertest": "^2.0.0"
   },
   "dependencies": {
