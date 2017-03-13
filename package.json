@@ -30,7 +30,7 @@
   "homepage": "https://github.com/leizongmin/express-router-async-support#readme",
   "devDependencies": {
     "async": "^2.0.1",
-    "babel-cli": "^6.14.0",
+    "babel-cli": "^6.24.0",
     "babel-preset-es2015-node4": "^2.1.0",
     "babel-preset-stage-3": "^6.11.0",
     "babel-register": "^6.14.0",
