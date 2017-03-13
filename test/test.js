@@ -1,7 +1,8 @@
 'use strict';
 
 const assert = require('assert');
-const wrap = require('../').wrap;
+const wrapRouter = require('../').wrapRouter;
+const wrapHandler = require('../').wrapHandler;
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('supertest');
@@ -12,7 +13,7 @@ describe('normal', function () {
   it('get, post, put, delete', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(bodyParser.json());
     app.use(router);
 
@@ -80,7 +81,7 @@ describe('normal', function () {
   it('all', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(bodyParser.json());
     app.use(router);
 
@@ -106,7 +107,7 @@ describe('normal', function () {
   it('use', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(bodyParser.json());
     app.use(router);
 
@@ -140,7 +141,7 @@ describe('normal', function () {
   it('param', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(bodyParser.json());
     app.use(router);
 
@@ -171,7 +172,7 @@ describe('normal', function () {
   it('route', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(router);
 
     router
@@ -215,7 +216,7 @@ describe('error', function () {
   it('throw error', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(router);
 
     router.get('/test', async function (_req, _res) {
@@ -244,7 +245,7 @@ describe('error', function () {
   it('error handler', function (done) {
 
     const app = express();
-    const router = wrap(new express.Router());
+    const router = wrapRouter(new express.Router());
     app.use(router);
 
     router.get('/test', async function (_req, _res) {
@@ -263,6 +264,74 @@ describe('error', function () {
           .end((err, res) => {
             if (err) return next(err);
             assert.deepEqual(res.body, { error: 'abcd' });
+            next();
+          });
+      },
+    ], done);
+
+  });
+
+  it('wrapHandler', function (done) {
+
+    const app = express();
+    const router = new express.Router();
+    app.use(bodyParser.json());
+    app.use(router);
+
+    router.get('/a', wrapHandler(async function (req, res) {
+      res.json(req.query);
+    }));
+
+    router.post('/b', wrapHandler(async function (req, res) {
+      res.json(req.body);
+    }));
+
+    router.put('/c', wrapHandler(async function (req, res) {
+      res.json(req.body);
+    }));
+
+    router.delete('/d', wrapHandler(async function (req, res) {
+      res.json(req.body);
+    })) ;
+
+    async.series([
+      function (next) {
+        request(app)
+          .get('/a')
+          .query({ a: 123 })
+          .end((err, res) => {
+            if (err) return next(err);
+            assert.deepEqual(res.body, { a: 123 });
+            next();
+          });
+      },
+      function (next) {
+        request(app)
+          .post('/b')
+          .send({ a: 456 })
+          .end((err, res) => {
+            if (err) return next(err);
+            assert.deepEqual(res.body, { a: 456 });
+            next();
+          });
+      },
+      function (next) {
+        request(app)
+          .put('/c')
+          .send({ a: 123, b: 456 })
+          .end((err, res) => {
+            if (err) return next(err);
+            assert.deepEqual(res.body, { a: 123, b: 456 });
+            next();
+          });
+      },
+      function (next) {
+        request(app)
+          .delete('/d')
+          .send({ a: 'abcd' })
+          .end((err, res) => {
+            if (err) return next(err);
+            assert.deepEqual(res.body, { a: 'abcd' });
             next();
           });
       },

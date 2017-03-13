@@ -15,11 +15,12 @@ $ npm install express-router-async-support --save
 'use strict';
 
 const express = require('express');
-const wrap = require('express-router-async-support').wrap;
+const wrapRouter = require('express-router-async-support').wrapRouter;
+const wrapHandler = require('express-router-async-support').wrapHandler;
 
 const app = express();
-// create router instance, use wrap() to support async function
-const router = wrap(new express.Router());
+// create router instance, use wrapRouter() to support async function
+const router = wrapRouter(new express.Router());
 app.use(router);
 
 // async function
@@ -29,6 +30,11 @@ router.get('/', async function (req, res, next) {
 // if you visit path "/", it will throws an error,
 // express-router-async-support will catch this error
 // and pass it to next middleware
+
+// or you can just use wrapHandler() to wrao a single async function
+app.use(wrapHandler(async function (req, res, next) {
+  throw new Error('just for test');
+}));
 ```
 
 
@@ -37,7 +43,7 @@ router.get('/', async function (req, res, next) {
 ```
 MIT License
 
-Copyright (c) 2016 Zongmin Lei <leizongmin@gmail.com>
+Copyright (c) 2016-2017 Zongmin Lei <leizongmin@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

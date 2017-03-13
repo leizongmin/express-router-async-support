@@ -69,4 +69,5 @@ function toArray(args) {
   return Array.prototype.slice.call(args);
 }
 
-exports.wrap = wrapRouter;
+exports.wrapRouter = wrapRouter;
+exports.wrapHandler = wrapAsyncHandler;
