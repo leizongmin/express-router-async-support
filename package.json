@@ -1,6 +1,6 @@
 {
   "name": "express-router-async-support",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "async function support for express.Router",
   "main": "dist/index.js",
   "typings": "index.d.ts",

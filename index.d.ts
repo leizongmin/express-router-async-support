@@ -8,4 +8,4 @@ export function wrapRouter(router: express.Router): express.Router;
 /**
  * 包装 handler，使其支持 async function
  */
-export function wrapHandler(handler: express.Handler, withErrorParam?: boolean = true): express.Router;
+export function wrapHandler(handler: express.Handler, withErrorParam?: boolean): express.Router;
