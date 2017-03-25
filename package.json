@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/leizongmin/express-router-async-support#readme",
   "devDependencies": {
-    "async": "^2.0.1",
+    "async": "^2.2.0",
     "babel-cli": "^6.24.0",
     "babel-eslint": "^7.1.1",
     "babel-preset-es2015-node4": "^2.1.0",
