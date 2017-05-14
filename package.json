@@ -42,7 +42,7 @@
     "eslint-config-lei": "0.0.16",
     "eslint-plugin-promise": "^3.5.0",
     "express": "^4.15.0",
-    "mocha": "^3.0.2",
+    "mocha": "^3.4.1",
     "supertest": "^2.0.1"
   },
   "dependencies": {
