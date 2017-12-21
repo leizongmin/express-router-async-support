@@ -1,4 +1,6 @@
 # express-router-async-support
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/leizongmin/express-router-async-support.svg)](https://greenkeeper.io/)
 async function support for express.Router
 
 
